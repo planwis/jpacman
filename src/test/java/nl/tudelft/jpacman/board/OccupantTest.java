@@ -52,10 +52,11 @@ class OccupantTest {
      */
     @Test
     void testReoccupy() {
-        Square target = new BasicSquare();
-        unit.occupy(target);
-        unit.occupy(target);
+        Square target1 = new BasicSquare();
+        Square target2 = new BasicSquare();
+        unit.occupy(target1);
+        unit.occupy(target2);
         assertThat(unit.hasSquare()).isTrue();
-        assertThat(target.getOccupants()).contains(this.unit);
+        assertThat(target2.getOccupants()).contains(this.unit);
     }
 }
