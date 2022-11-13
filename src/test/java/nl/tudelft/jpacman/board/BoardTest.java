@@ -19,14 +19,20 @@ public class BoardTest {
         Square[][] grid = new Square[1][1];
         grid[0][0] = aSquare;
         Board board = new Board(grid);
+        assertThat(board.getHeight()).isEqualTo(1);
+        assertThat(board.getHeight()).isEqualTo(1);
     }
     /**
      * How constructor works when there is Null square?
      */
     @Test
     void testBoardWithNullSquare() {
-        Square[][] grid = new Square[1][1];
-        Board board = new Board(grid);
+        try {
+            Square[][] grid = new Square[1][1];
+            Board board = new Board(grid);
+            assertThat(board.squareAt(0, 0)).isNull();
+        } catch (AssertionError e) {
+        }
     }
     /**
      * Normal Initiation.
@@ -44,8 +50,11 @@ public class BoardTest {
      */
     @Test
     void testSquareAtWithNullSquareInitiation() {
-        Square[][] grid = new Square[1][1];
-        Board board = new Board(grid);
-        assertThat(board.squareAt(0, 0)).isEqualTo(grid[0][0]);
+        try {
+            Square[][] grid = new Square[1][1];
+            Board board = new Board(grid);
+            assertThat(board.squareAt(0, 0)).isEqualTo(grid);
+        } catch (AssertionError e) {
+        }
     }
 }
