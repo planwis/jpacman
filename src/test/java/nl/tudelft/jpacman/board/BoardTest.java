@@ -21,7 +21,7 @@ public class BoardTest {
         Board board = new Board(grid);
     }
     /**
-     * How constructor works when there is Null square
+     * How constructor works when there is Null square?
      */
     @Test
     void testBoardWithNullSquare() {
@@ -29,7 +29,7 @@ public class BoardTest {
         Board board = new Board(grid);
     }
     /**
-     * Normal Initiation
+     * Normal Initiation.
      */
     @Test
     void testSquareAtWithNormalInitiation() {
@@ -40,7 +40,7 @@ public class BoardTest {
         assertThat(board.squareAt(0, 0)).isEqualTo(aSquare);
     }
     /**
-     * testSquareAtWithNullSquareInitiation
+     * testSquareAtWithNullSquareInitiation.
      */
     @Test
     void testSquareAtWithNullSquareInitiation() {
