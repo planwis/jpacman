@@ -1,12 +1,7 @@
 package nl.tudelft.jpacman.level;
 
-import nl.tudelft.jpacman.PacmanConfigurationException;
-import nl.tudelft.jpacman.board.Board;
 import nl.tudelft.jpacman.board.BoardFactory;
-import nl.tudelft.jpacman.board.Square;
-import nl.tudelft.jpacman.npc.Ghost;
 import nl.tudelft.jpacman.npc.ghost.Blinky;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -46,7 +41,8 @@ public class MapParserTest {
         map.add("############");
         mapParser.parseMap(map);
         Mockito.verify(levelFactory, Mockito.times(1)).createGhost();
-        Mockito.verify(levelFactory, Mockito.times(1)).createLevel(Mockito.any(), Mockito.any(), Mockito.any());
+        Mockito.verify(levelFactory, Mockito.times(1)).createLevel(Mockito.any(),
+            Mockito.any(), Mockito.any());
     }
 }
 
