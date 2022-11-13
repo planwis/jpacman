@@ -1,7 +1,9 @@
 package nl.tudelft.jpacman.level;
 
+import nl.tudelft.jpacman.PacmanConfigurationException;
 import nl.tudelft.jpacman.board.BoardFactory;
 import nl.tudelft.jpacman.npc.ghost.Blinky;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -41,8 +43,29 @@ public class MapParserTest {
         map.add("############");
         mapParser.parseMap(map);
         Mockito.verify(levelFactory, Mockito.times(1)).createGhost();
-        Mockito.verify(levelFactory, Mockito.times(1)).createLevel(Mockito.any(),
-            Mockito.any(), Mockito.any());
+        Mockito.verify(levelFactory,
+            Mockito.times(1)).createLevel(Mockito.any(), Mockito.any(), Mockito.any());
+    }
+
+    /**
+     * Test for the parseMap method (bad map).
+     */
+    @Test
+    public void testParseMapWrong1() {
+        PacmanConfigurationException thrown =
+            Assertions.assertThrows(PacmanConfigurationException.class, () -> {
+                MockitoAnnotations.initMocks(this);
+                assertNotNull(boardFactory);
+                assertNotNull(levelFactory);
+                MapParser mapParser = new MapParser(levelFactory, boardFactory);
+                ArrayList<String> map = new ArrayList<>();
+                /*
+                Create a map with inconsistent size between
+                each row or contain invalid characters
+                */
+                mapParser.parseMap(map);
+            });
+        Assertions.assertEquals("Input text must consist of at least 1 row.", thrown.getMessage());
     }
 }
 
